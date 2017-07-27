@@ -1,9 +1,13 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Contacts {
-	private List<Contact> contact = new ArrayList();
+	private Set<Contact> contact = new TreeSet();
 
 }
 
@@ -11,12 +15,12 @@ class Contact {
 	private Name name;
 	private PhoneticName pname;
 	private Organisation organisation;
-	private Phone phone;
-	private Email email;
-	private IM im;
+	private Map<Types, Phone> phone = new HashMap<>();
+	private Map<Types, Email> email = new HashMap<>();
+	private List<IM> im = new ArrayList<>();
 	private Address address;
 	private Notes notes;
-	private Website web;
+	private List<Website> web = new ArrayList<>();
 	private Groups groupname;
 
 }
@@ -38,7 +42,7 @@ class PhoneticName {
 
 class Organisation {
 	private String companyName;
-	private String Title;
+	private String title;
 }
 
 class Phone {
@@ -48,7 +52,7 @@ class Phone {
 
 class Email {
 	private String email;
-	private EmailType type;
+	private Types emailType;
 }
 
 class IM {
@@ -59,11 +63,11 @@ class IM {
 
 class Address {
 	private int zipCode;
-	private ZipcodeType ziptype;
 	private String state;
 	private String city;
 	private String neighbourhood;
 	private String street;
+	private Types zipcodeType;
 }
 
 class Notes {
@@ -80,7 +84,7 @@ class Events {
 }
 
 class Relationship {
-	private RelationshipType relationshipname;
+	private RelationshipType relationshipName;
 }
 
 class Groups {
@@ -89,20 +93,10 @@ class Groups {
 
 class MobileNoType {
 	private String mobile;
-	private String work;
-	private String home;
 	private String main;
 	private String workFax;
 	private String homeFax;
-	private String other;
-	private Custom custom;
-}
-
-class EmailType {
-	private String work;
-	private String home;
-	private String other;
-	private Custom custom;
+	private Types otherTypes;
 }
 
 class IMType {
@@ -114,13 +108,6 @@ class IMType {
 	private String hangouts;
 	private String icq;
 	private String jabber;
-	private Custom custom;
-}
-
-class ZipcodeType {
-	private String work;
-	private String home;
-	private String other;
 	private Custom custom;
 }
 
@@ -149,4 +136,11 @@ class GroupName {
 
 class Custom {
 	private String customName;
+}
+
+class Types {
+	private String work;
+	private String home;
+	private String other;
+	private Custom custom;
 }
